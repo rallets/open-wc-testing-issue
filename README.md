@@ -6,7 +6,9 @@ Refer to:
 
 - [2276](https://github.com/open-wc/open-wc/issues/2276)
 - [2275](https://github.com/open-wc/open-wc/issues/2275)
-  
+
+UPDATE: Working version.
+
 ## Testing with Web Test Runner
 
 To run the suite of Web Test Runner tests, run

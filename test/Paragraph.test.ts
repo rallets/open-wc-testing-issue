@@ -1,5 +1,6 @@
 import { fixture, expect, html, elementUpdated } from '@open-wc/testing';
 import { Paragraph } from '../src/paragraph';
+import '../src/paragraph'; // needed for the registration of the custom component
 
 describe('Paragraph', () => {
   it('can instantiate', async () => {
@@ -10,8 +11,8 @@ describe('Paragraph', () => {
 
     expect(el).shadowDom.not.be.null;
 
-    expect(el.getAttribute('value')).to.equal(''); // <= FAILS
-    expect(el.value).to.equal(''); // <= FAILS
+    expect(el.getAttribute('value')).to.equal('');
+    expect(el.value).to.equal('');
   });
 
   it('has value and slot', async () => {
@@ -40,11 +41,11 @@ describe('Paragraph', () => {
         const el = await fixture<Paragraph>('<md-paragraph value="value 1"></md-paragraph>');
 
         expect(el.getAttribute('value')).to.equal('value 1');
-        expect(el.value).to.eq('value 1'); // <= FAILS
+        expect(el.value).to.eq('value 1');
 
         el.value = 'value 2';
         await elementUpdated(el);
-        expect(el).dom.to.equal('<md-paragraph value="value 2"></md-paragraph>'); // <= FAILS
+        expect(el).dom.to.equal('<md-paragraph value="value 2"></md-paragraph>');
       });
 
     });

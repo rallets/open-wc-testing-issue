@@ -10,11 +10,13 @@ export class Paragraph extends LitElement {
 	public static styles = [ParagraphStyle];
 
   connectedCallback(): void {
+    super.connectedCallback();
     console.log('connectedCallback');
   }
 
   attributeChangedCallback(name: string, old: string | null, value: string | null): void {
     super.attributeChangedCallback(name, old, value);
+    console.log('attributeChangedCallback');
   }
 
 	render(): TemplateResult {

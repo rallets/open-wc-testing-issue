@@ -6,10 +6,8 @@ describe('Paragraph', () => {
   it('can instantiate', async () => {
     const el = await fixture<Paragraph>('<md-paragraph></md-paragraph>');
     
-    const root = el.shadowRoot?.innerHTML;
-    console.log('el.shadowRoot:', root);
-
-    expect(el).shadowDom.not.be.null;
+    // el.shadowRoot?.innerHTML => <!----><div id="container" ><slot></slot></div><!---->
+    // expect(el).shadowDom => <md-paragraph value=""></md-paragraph>
 
     expect(el.getAttribute('value')).to.equal('');
     expect(el.value).to.equal('');

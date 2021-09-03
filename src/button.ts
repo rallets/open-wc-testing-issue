@@ -19,6 +19,9 @@ export class Button extends LitElement {
     if (!this.text) {
       throw new Error('property "text" required');
     }
+    if (this.text === 'aaa') {
+      throw new Error('property "text" invalid');
+    }
   }
 
   onCustomEvent(e: PointerEvent | KeyboardEvent): void {

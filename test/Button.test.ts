@@ -1,9 +1,13 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { fixture, expect, html, oneEvent, defineCE } from '@open-wc/testing';
+import { fixture, expect, html, oneEvent, defineCE, elementUpdated } from '@open-wc/testing';
 import { spy, stub } from 'sinon';
 import { nameofFactory } from '../helpers/nameof';
 import { Button } from '../src/button';
 import '../src/button'; // needed for the registration of the custom component
+
+import chaiAsPromised from 'chai-as-promised';
+// (window as any).chai.use(chaiAsPromised);
+chai.use(chaiAsPromised);
 
 const nameof = nameofFactory<Button>();
 
@@ -18,6 +22,11 @@ describe('Button', () => {
   it('should throw when missing <text> property', async () => {
     const el = new Button();
     expect(() => el.checkProperties()).to.throw('property "text" required');
+  });
+
+  it('should throw when <text> is invalid', async () => {
+    const el = await fixture<Button>('<md-button text="aaa"></md-button>');
+    expect(elementUpdated(el)).to.eventually.be.rejectedWith('property "text" invalid');
   });
 
   it('checkProperties gets called', async () => {

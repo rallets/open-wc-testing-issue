@@ -6,7 +6,6 @@ import { Button } from '../src/button';
 import '../src/button'; // needed for the registration of the custom component
 
 import chaiAsPromised from 'chai-as-promised';
-// (window as any).chai.use(chaiAsPromised);
 chai.use(chaiAsPromised);
 
 const nameof = nameofFactory<Button>();
